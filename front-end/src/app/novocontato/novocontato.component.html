@@ -1,0 +1,143 @@
+<div class="d-flex justify-content-center align-items-center min-vh-100 home-bg">
+  <div class="container">
+    <div class="mx-auto cute-card shadow-lg" style="max-width: 900px;">
+      <app-header-contato></app-header-contato>
+
+      <div class="p-4">
+
+        <!-- Título -->
+        <h1 class="text-center cute-title mb-4">Novo Contato</h1>
+
+        <form [formGroup]="formGroupContato">
+          
+          <!-- Seção: Informações Básicas -->
+          <div class="cute-section mb-4">
+            <h4 class="cute-section-title">❀ Informações Básicas</h4>
+
+            <div class="row mt-2">
+              <div class="col-md-12 mb-3">
+                <label class="form-label cute-label">Número de Telefone</label>
+                <input 
+                  formControlName="number"
+                  mask="(00)00000-0000"
+                  [dropSpecialCharacters]="false"
+                  type="text" 
+                  class="form-control cute-input"
+                  placeholder="*(00)00000-0000"
+                />
+              </div>
+
+              <div *ngIf="errorMessage" class="alert cute-alert mt-2">
+                Já existe um contato com este número.
+              </div>
+            </div>
+          </div>
+
+          <!-- Seção: Identificação -->
+          <div class="cute-section mb-4">
+            <h4 class="cute-section-title">❀ Identificação</h4>
+
+            <div class="row mt-2">
+              <div class="col-md-6 mb-3">
+                <label class="form-label cute-label">Apelido</label>
+                <input formControlName="nickname" type="text" class="form-control cute-input" />
+              </div>
+
+              <div class="col-md-6 mb-3">
+                <label class="form-label cute-label">Nome Completo</label>
+                <input formControlName="fullname" type="text" class="form-control cute-input" />
+              </div>
+            </div>
+          </div>
+
+          <!-- Seção: Informações Pessoais -->
+          <div class="cute-section mb-4">
+            <h4 class="cute-section-title">❀ Informações Pessoais</h4>
+
+            <div class="row mt-2">
+              <div class="col-md-6 mb-3">
+                <label class="form-label cute-label">Ocupação</label>
+                <input formControlName="occupation" type="text" class="form-control cute-input" />
+              </div>
+
+              <div class="col-md-6 mb-3">
+                <label class="form-label cute-label">Cidade</label>
+                <input formControlName="address" type="text" class="form-control cute-input" />
+              </div>
+            </div>
+
+            <div class="row mt-1">
+              <div class="col-md-6 mb-3">
+                <label class="form-label cute-label">Email</label>
+                <input formControlName="email" type="email" class="form-control cute-input" />
+              </div>
+
+              <div class="col-md-6 mb-3">
+                <label class="form-label cute-label">Data de Nascimento</label>
+                <input formControlName="birthday" type="date" class="form-control cute-input" />
+              </div>
+            </div>
+          </div>
+
+          <!-- Seção: Categoria e Favorito -->
+          <div class="cute-section mb-4">
+            <h4 class="cute-section-title">❀ Categoria</h4>
+
+            <div class="row mt-2">
+              <!-- Tipo -->
+              <div class="col-md-4 mb-3">
+                <label class="form-label cute-label">Tipo de Contato</label>
+                <select 
+                  formControlName="type"
+                  class="form-select cute-select"
+                >
+                  <option value="" disabled selected>Tipo</option>
+                  <option value="Familia">Família</option>
+                  <option value="Trabalho">Trabalho</option>
+                  <option value="Faculdade">Faculdade</option>
+                  <option value="Amigos">Amigos</option>
+                </select>
+              </div>
+
+              <!-- Favorito -->
+              <div class="col-md-4 mb-3 d-flex flex-column">
+                <label class="form-label cute-label">Favorito</label>
+
+                <button
+                  type="button"
+                  class="btn p-0 border-0 bg-transparent cute-fav-btn"
+                  (click)="toggleFavorite()"
+                >
+                  <i
+                    class="bi"
+                    [class.bi-star-fill]="formGroupContato.get('favorite')?.value"
+                    [class.bi-star]="!formGroupContato.get('favorite')?.value"
+                    style="font-size: 2rem;"
+                  ></i>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Botões -->
+          <div class="d-flex justify-content-between mt-4">
+            <button type="button" class="btn cute-btn" (click)="save()" [disabled]="formGroupContato.invalid">
+              Salvar
+            </button>
+
+            <button type="button" class="btn cute-btn-danger" (click)="clear()">
+              Limpar
+            </button>
+
+            <button type="button" class="btn cute-btn" [routerLink]="['/home']">
+              Voltar
+            </button>
+          </div>
+
+        </form>
+      </div>
+
+      <app-footer></app-footer>
+    </div>
+  </div>
+</div>

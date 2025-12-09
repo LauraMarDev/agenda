@@ -1,0 +1,109 @@
+/* Fonte fofa e redondinha */
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;600&display=swap');
+
+body {
+  font-family: 'Quicksand', sans-serif !important;
+  font-size: 16px;
+  background-color: #ffeaf4; /* rosa pastel clarinho */
+  color: #4a4a4a;
+}
+
+/* Scrollbar fofinha */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #ffd6e8;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #ff9acb;
+  border-radius: 10px;
+}
+
+/* Ajuste geral de inputs */
+input,
+select,
+textarea {
+  border-radius: 10px !important;
+  border: 3px solid #ffb6d9 !important;
+  background-color: #fff !important;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  box-shadow: 0 0 8px rgba(255, 150, 204, 0.6) !important;
+  border-color: #ff8fc7 !important;
+}
+
+/* Botões fofinhos */
+button,
+.btn {
+  border-radius: 12px !important;
+  border-width: 3px !important;
+  border-color: #ffb6d9 !important;
+  background-color: #ff92c2 !important;
+  color: white !important;
+  font-weight: 600;
+  transition: transform .15s ease-in-out, box-shadow .15s ease-in-out;
+}
+
+button:hover,
+.btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 10px rgba(255, 150, 204, 0.5);
+}
+
+/* Botão Danger rosa */
+.btn-danger {
+  background-color: #ff6fa3 !important;
+  border-color: #ff8fba !important;
+}
+
+/* Títulos */
+h1, h2, h3, h4 {
+  color: #ff6fa3;
+  font-weight: 700;
+  text-shadow: 1px 1px 0 #ffd6e8;
+}
+
+/* Bordas internas */
+.border-grey {
+  border-color: #ffcde1 !important;
+}
+
+/* Cards e containers */
+.bg-white {
+  background-color: #fff5fa !important;
+}
+
+/* Ícones */
+.bi {
+  color: #ff4e97 !important;
+}
+
+/* Dropdown seta personalizada também rosa */
+.dropdown select {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='%23ff4e97' d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3e%3c/svg%3e");
+}
+
+/* Alertas */
+.alert-danger {
+  background-color: #ffe0ec !important;
+  color: #c62860 !important;
+  border-color: #ffbad1 !important;
+}
+
+/* Header e Footer */
+header, app-header, .app-header {
+  background-color: #ff8fc7 !important;
+  color: white !important;
+}
+
+footer, app-footer, .app-footer {
+  background-color: #ff8fc7 !important;
+  color: white !important;
+}

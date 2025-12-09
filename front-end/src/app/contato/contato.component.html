@@ -1,0 +1,145 @@
+<div class="d-flex justify-content-center align-items-center min-vh-100 home-bg">
+  <div class="container">
+    <div class="mx-auto cute-card shadow-lg" style="max-width: 900px; width: 100%;">
+      
+      <!-- Header -->
+      <app-header-contato></app-header-contato>
+
+      <!-- Nome -->
+      <h2 class="text-center cute-title">{{ selectedContato?.fullname }}</h2>
+
+      <!-- Detalhes -->
+      <div *ngIf="selectedContato" class="container mt-4">
+        <h2 class="text-center mb-4 cute-subtitle">Detalhes do Contato</h2>
+
+        <form [formGroup]="formGroupContato" class="mx-auto" style="max-width: 500px;">
+          
+          <!-- Campos editáveis -->
+          <div *ngFor="let field of editableFields" class="mb-3">
+            <label [for]="field.name" class="form-label cute-label">{{ field.label }}:</label>
+
+            <ng-container [ngSwitch]="field.type">
+
+              <!-- Texto -->
+              <input
+                *ngSwitchCase="'text'"
+                [id]="field.name"
+                [formControlName]="field.name"
+                [readonly]="fieldEditing[field.name] !== true"
+                [placeholder]="field.label"
+                class="form-control cute-input"
+                type="text"
+              >
+
+              <!-- Telefone -->
+              <input
+                *ngSwitchCase="'phone'"
+                [id]="field.name"
+                [formControlName]="field.name"
+                mask="(00)00000-0000"
+                [readonly]="fieldEditing[field.name] !== true"
+                [placeholder]="field.label"
+                class="form-control cute-input"
+                type="text"
+              >
+
+              <!-- Email -->
+              <input
+                *ngSwitchCase="'email'"
+                [id]="field.name"
+                [formControlName]="field.name"
+                [readonly]="fieldEditing[field.name] !== true"
+                [placeholder]="field.label"
+                class="form-control cute-input"
+                type="email"
+              >
+
+              <!-- Data Birthday -->
+              <input
+                *ngSwitchCase="'date'"
+                [id]="field.name"
+                [formControlName]="field.name"
+                [readonly]="fieldEditing[field.name] !== true"
+                class="form-control cute-input"
+                type="date"
+              >
+
+              <!-- Select -->
+              <ng-container *ngSwitchCase="'select'">
+
+                <!-- Dropdown personalizado para tipo -->
+                <ng-container *ngIf="field.name === 'type'; else defaultSelect">
+                  
+                  <div class="dropdown">
+                    <button
+                      class="btn cute-btn dropdown-toggle"
+                      id="dropdownTipo"
+                      data-bs-toggle="dropdown"
+                      type="button"
+                    >
+                      {{ formGroupContato.get('type')?.value || 'Tipo' }}
+                    </button>
+
+                    <ul class="dropdown-menu cute-dropdown">
+                      <li><a class="dropdown-item" href="#" (click)="selectType('Familia', $event)">Familia</a></li>
+                      <li><a class="dropdown-item" href="#" (click)="selectType('Trabalho', $event)">Trabalho</a></li>
+                      <li><a class="dropdown-item" href="#" (click)="selectType('Faculdade', $event)">Faculdade</a></li>
+                      <li><a class="dropdown-item" href="#" (click)="selectType('Amigos', $event)">Amigos</a></li>
+                    </ul>
+                  </div>
+
+                </ng-container>
+
+                <!-- Select padrão -->
+                <ng-template #defaultSelect>
+                  <select
+                    [id]="field.name"
+                    [formControlName]="field.name"
+                    class="form-select cute-input"
+                    [disabled]="fieldEditing[field.name] !== true"
+                  >
+                    <option [value]="true">Sim</option>
+                    <option [value]="false">Não</option>
+                  </select>
+                </ng-template>
+              </ng-container>
+
+            </ng-container>
+          </div>
+
+        </form>
+
+        <!-- Botões de excluir, cancelar, salvar e voltar do fimzinho -->
+        <div class="text-center mt-4">
+
+          <button class="btn cute-btn me-2" (click)="enableAllEdits()">Editar Contato</button>
+
+          <button class="btn cute-btn-danger" *ngIf="excluir" (click)="delete(selectedContato)">
+            Excluir
+          </button>
+
+          <button class="btn cute-btn-danger ms-2" *ngIf="IsEditing" (click)="cancelar()">
+            Cancelar
+          </button>
+
+          <button class="btn cute-btn ms-2" *ngIf="IsEditing" (click)="update()">
+            Salvar
+          </button>
+
+          <button class="btn cute-btn ms-2" [routerLink]="['/home']">
+            Voltar
+          </button>
+        </div>
+      </div>
+
+      <!-- Caso nenhum contato tenha sido selecionado -->
+      <div *ngIf="!selectedContato" class="text-center mt-5">
+        <p class="cute-label">Nenhum contato selecionado!</p>
+        <button class="btn cute-btn" [routerLink]="['/home']">Voltar</button>
+      </div>
+
+      <app-footer></app-footer>
+
+    </div>
+  </div>
+</div>

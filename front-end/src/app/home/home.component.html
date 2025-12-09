@@ -1,0 +1,154 @@
+<div class="home-bg min-vh-100 d-flex justify-content-center align-items-start py-5">
+  <div class="container" style="max-width: 1100px;">
+
+    <!-- Card principal -->
+    <div class="cute-card shadow-lg w-100">
+
+      <app-header></app-header>
+
+      <!-- Topo: Busca + Ações -->
+      <div class="p-4 border-bottom cute-section">
+
+        <h2 class="text-center mb-4">Lista de Contatos</h2>
+
+        <!-- Barra de busca -->
+        <div class="input-group cute-search mb-3">
+          <span class="input-group-text cute-search-icon">🔍</span>
+
+          <input
+            type="text"
+            class="form-control cute-input"
+            placeholder="Buscar por nome, apelido, email..."
+            [(ngModel)]="termoBusca"
+            (keyup.enter)="buscar()"
+          />
+
+          <button class="btn cute-btn px-4" (click)="buscar()">Buscar</button>
+        </div>
+
+        <!-- Ações principais -->
+        <div class="d-flex justify-content-between flex-wrap">
+
+          <!-- Botão novo contato -->
+          <button
+            class="btn cute-btn mb-2"
+            [routerLink]="['/novocontato']">
+            ➕ Novo Contato
+          </button>
+
+          <!-- Botões de ordenação -->
+          <div class="btn-group mb-2">
+            <button class="btn cute-btn" (click)="ordenarPor('fullname')">A-Z</button>
+            <button class="btn cute-btn" (click)="ordenarPor('email')">Email</button>
+            <button class="btn cute-btn" (click)="carregarFavoritosOrdenados('fullname')">★ Favoritos</button>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Área de filtros lateral + lista -->
+      <div class="row m-0">
+
+        <!-- Filtros -->
+        <div class="col-12 col-md-3 p-4 cute-filter border-end">
+          <h5 class="mb-3">Filtros</h5>
+
+          <label class="fw-bold mb-2">Tipo:</label>
+
+          <select #tipo class="form-select cute-input" (change)="filtrarPorTipo(tipo.value)">
+            <option value="">Todos</option>
+            <option value="Familia">Família</option>
+            <option value="Trabalho">Trabalho</option>
+            <option value="Faculdade">Faculdade</option>
+            <option value="Amigos">Amigos</option>
+          </select>
+
+
+          <hr class="my-4">
+
+          <div>
+            <label class="fw-bold">Exibir:</label>
+
+            <div class="form-check mt-2">
+              <input class="form-check-input" type="checkbox" [(ngModel)]="mostrarEmail">
+              <label class="form-check-label">Email</label>
+            </div>
+
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" [(ngModel)]="mostrarTipo">
+              <label class="form-check-label">Tipo</label>
+            </div>
+          </div>
+        </div>
+
+        <!-- Lista de cartões -->
+        <div class="col-12 col-md-9 p-4">
+
+          <!-- Lista em cards -->
+          <div class="row g-3">
+
+            <div
+              class="col-12 cute-contact-card"
+              *ngFor="let c of contatosPaginados"
+              [routerLink]="['/contato', c.id]"
+              [hidden]="!c.number">
+
+              <div class="cute-contact shadow-sm p-3">
+
+                <div class="d-flex justify-content-between">
+                  <h5 class="mb-1">{{ c.nickname }}</h5>
+
+                  <span
+                    *ngIf="c.favorite"
+                    class="text-danger"
+                    style="font-size: 2rem;">
+                    ♥︎
+                  </span>
+                  <span
+                    *ngIf="!c.favorite"
+                    class="text-danger"
+                    style="font-size: 2rem;">
+                    ♡
+                  </span>
+                </div>
+
+                <p class="m-0"><strong>Nome:</strong> {{ c.fullname }}</p>
+                <p class="m-0" *ngIf="mostrarTipo"><strong>Tipo:</strong> {{ c.type }}</p>
+                <p class="m-0" *ngIf="mostrarEmail"><strong>Email:</strong> {{ c.email }}</p>
+                <p class="m-0"><strong>Número:</strong> {{ c.number }}</p>
+
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Paginação -->
+          <nav class="mt-4" *ngIf="contatosFiltrados.length > 0">
+            <ul class="pagination justify-content-center">
+              <li class="page-item" [class.disabled]="paginaAtual === 1">
+                <button class="page-link cute-page" (click)="mudarPagina(paginaAtual - 1)">◄</button>
+              </li>
+
+              <li class="page-item" *ngFor="let pagina of totalPaginas()" [class.active]="pagina === paginaAtual">
+                <button class="page-link cute-page" (click)="mudarPagina(pagina)">{{ pagina }}</button>
+              </li>
+
+              <li class="page-item" [class.disabled]="paginaAtual === totalPaginas().length">
+                <button class="page-link cute-page" (click)="mudarPagina(paginaAtual + 1)">►</button>
+              </li>
+            </ul>
+          </nav>
+
+          <!-- Mensagem caso vazio -->
+          <div class="text-center mt-3" *ngIf="contatosFiltrados.length === 0">
+            <p class="text-muted">Nenhum contato encontrado 💭</p>
+          </div>
+
+        </div>
+      </div>
+
+      <app-footer></app-footer>
+
+    </div>
+  </div>
+</div>

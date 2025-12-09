@@ -1,0 +1,86 @@
+/* Fundo geral */
+.home-bg {
+  background: linear-gradient(135deg, #ffd6e8, #ffe6f2);
+}
+
+/* Cartão principal */
+.cute-card {
+  background: #fff;
+  border-radius: 20px;
+  border: 4px solid #ffb6d9;
+  padding-bottom: 20px;
+}
+
+/* Inputs */
+.cute-input {
+  border: 3px solid #ffb6d9 !important;
+  border-radius: 10px !important;
+  background-color: #fff0f7 !important;
+}
+
+.cute-input:focus {
+  box-shadow: 0 0 8px #ff7bbf !important;
+  border-color: #ff7bbf !important;
+}
+
+/* Botões */
+.cute-btn {
+  background-color: #ff7cc6 !important;
+  border: 3px solid #ffb6d9 !important;
+  color: white !important;
+  border-radius: 10px !important;
+  transition: 0.3s;
+}
+
+.cute-btn:hover {
+  background-color: #ff4faf !important;
+  transform: scale(1.03);
+}
+
+/* Dropdown */
+.cute-dropdown {
+  background-color: #ffe0ef;
+  border: 3px solid #ffb6d9;
+  border-radius: 10px !important;
+}
+
+.cute-dropdown .dropdown-item {
+  color: #d63384 !important;
+}
+
+.cute-dropdown .dropdown-item:hover {
+  background-color: #ffb6d9 !important;
+  color: white !important;
+}
+
+/* Tabela */
+.cute-table thead {
+  background-color: #ffd1e6;
+  border-bottom: 3px solid #ffb6d9;
+}
+
+.cute-table th {
+  color: #c2185b;
+  font-weight: bold;
+}
+
+.cute-row {
+  transition: 0.3s;
+}
+
+.cute-row:hover {
+  background-color: #ffe6f2;
+  cursor: pointer;
+}
+
+/* Paginação */
+.cute-page {
+  background-color: #ff7cc6 !important;
+  color: white !important;
+  border: 3px solid #ffb6d9 !important;
+  border-radius: 10px !important;
+}
+
+.page-item.active .cute-page {
+  background-color: #ff4faf !important;
+}

@@ -1,0 +1,97 @@
+/* Inputs readonly e selects desabilitados */
+input[readonly],
+select[disabled] {
+  cursor: default !important;
+  background-color: #ffe6f3 !important;
+  border: 2px solid #ffb6d9 !important;
+  color: #b4005c !important;
+  user-select: none;
+  pointer-events: none;
+  box-shadow: none !important;
+}
+
+/* Avatar do contato */
+.cute-avatar {
+  max-width: 150px;
+  border-radius: 20px;
+  margin-bottom: 10px;
+  box-shadow: 0 0 8px #ffc6e6;
+}
+
+/* Títulos */
+.cute-title {
+  color: #a30058;
+  text-shadow: 0 1px 1px #ffe0f1;
+}
+
+.cute-subtitle {
+  color: #c4006e;
+  font-weight: bold;
+  text-shadow: 0 1px 1px #ffd6ef;
+}
+
+/* Labels */
+.cute-label {
+  color: #b4005c;
+  font-weight: 600;
+}
+
+/* Inputs */
+.cute-input {
+  background-color: #fff0fa !important;
+  border-radius: 12px !important;
+  border: 2px solid #ff9ac9 !important;
+  transition: 0.2s;
+}
+
+.cute-input:focus {
+  border-color: #ff75c4 !important;
+  box-shadow: 0 0 6px #ff75c4 !important;
+}
+
+/* Botões */
+.cute-btn {
+  background-color: #ff8ecf !important;
+  border: 2px solid #ff70c2 !important;
+  border-radius: 12px !important;
+  color: white !important;
+  font-weight: bold;
+  transition: 0.2s;
+}
+
+.cute-btn:hover {
+  background-color: #ff74c4 !important;
+  box-shadow: 0 0 8px #ffbfe3 !important;
+}
+
+/* Botão vermelho */
+.cute-btn-danger {
+  background-color: #ff6b9d !important;
+  border: 2px solid #ff3f76 !important;
+  border-radius: 12px !important;
+  color: white !important;
+}
+
+.cute-btn-danger:hover {
+  background-color: #ff3f76 !important;
+  box-shadow: 0 0 8px #ff9fba !important;
+}
+
+/* Dropdown */
+.cute-dropdown {
+  background: #ffe4f2;
+  border: 2px solid #ff9ac9;
+}
+
+.cute-dropdown .dropdown-item {
+  color: #b4005c;
+  font-weight: bold;
+}
+
+.cute-dropdown .dropdown-item:hover {
+  background: #ffb8e1;
+}
+
+.home-bg {
+  background: linear-gradient(135deg, #ffd6e8, #ffe6f2);
+}
