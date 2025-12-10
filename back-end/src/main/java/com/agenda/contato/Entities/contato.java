@@ -8,7 +8,16 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+
+/*
+@ManyToOne
+    @JoinColumn(name = "type_id")
+    private tipo type;
+
+*/
 
 @Entity
 @Table(name = "TBL_Contato")
@@ -17,19 +26,38 @@ public class contato implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-
     private String nickname;
     private String fullname;
     private String occupation;
     private Date birthday;
     private String address;
     private String email;
-
     @Column(unique = true)
     private String number;
-    
     private String type;
     private Boolean favorite;
+
+    @ManyToOne
+    @JoinColumn(name = "type_id")
+    private tipo tipo;
+    
+    public contato() {
+
+    }
+
+    public contato(long id, String nickname, String fullname, String occupation, Date birthday, String address, String email, String number, String type, Boolean favorite) {
+        this.id = id;
+        this.nickname = nickname;
+        this.fullname = fullname;
+        this.occupation = occupation;
+        this.birthday = birthday;
+        this.address = address;
+        this.email = email;
+        this.number = number;
+        this.type = type;
+        this.favorite = favorite;
+    }
+
     public long getId() {
         return id;
     }

@@ -13,6 +13,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NovocontatoComponent } from './novocontato/novocontato.component';
 import { NgxMaskDirective, NgxMaskPipe, provideNgxMask } from 'ngx-mask';
 import { HeaderContatoComponent } from './header-contato/header-contato.component';
+import { NovoTipoComponent } from './novo-tipo/novo-tipo.component';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { HeaderContatoComponent } from './header-contato/header-contato.componen
     HeaderComponent,
     ContatoComponent,
     NovocontatoComponent,
-    HeaderContatoComponent
+    HeaderContatoComponent,
+    NovoTipoComponent
   ],
   imports: [
     BrowserModule,

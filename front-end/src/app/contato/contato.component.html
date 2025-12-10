@@ -2,25 +2,20 @@
   <div class="container">
     <div class="mx-auto cute-card shadow-lg" style="max-width: 900px; width: 100%;">
       
-      <!-- Header -->
       <app-header-contato></app-header-contato>
 
-      <!-- Nome -->
       <h2 class="text-center cute-title">{{ selectedContato?.fullname }}</h2>
 
-      <!-- Detalhes -->
       <div *ngIf="selectedContato" class="container mt-4">
         <h2 class="text-center mb-4 cute-subtitle">Detalhes do Contato</h2>
 
         <form [formGroup]="formGroupContato" class="mx-auto" style="max-width: 500px;">
           
-          <!-- Campos editáveis -->
           <div *ngFor="let field of editableFields" class="mb-3">
             <label [for]="field.name" class="form-label cute-label">{{ field.label }}:</label>
 
             <ng-container [ngSwitch]="field.type">
 
-              <!-- Texto -->
               <input
                 *ngSwitchCase="'text'"
                 [id]="field.name"
@@ -31,7 +26,6 @@
                 type="text"
               >
 
-              <!-- Telefone -->
               <input
                 *ngSwitchCase="'phone'"
                 [id]="field.name"
@@ -43,7 +37,6 @@
                 type="text"
               >
 
-              <!-- Email -->
               <input
                 *ngSwitchCase="'email'"
                 [id]="field.name"
@@ -54,7 +47,6 @@
                 type="email"
               >
 
-              <!-- Data Birthday -->
               <input
                 *ngSwitchCase="'date'"
                 [id]="field.name"
@@ -64,7 +56,6 @@
                 type="date"
               >
 
-              <!-- Select -->
               <ng-container *ngSwitchCase="'select'">
 
                 <!-- Dropdown personalizado para tipo -->
@@ -90,7 +81,6 @@
 
                 </ng-container>
 
-                <!-- Select padrão -->
                 <ng-template #defaultSelect>
                   <select
                     [id]="field.name"
@@ -109,7 +99,6 @@
 
         </form>
 
-        <!-- Botões de excluir, cancelar, salvar e voltar do fimzinho -->
         <div class="text-center mt-4">
 
           <button class="btn cute-btn me-2" (click)="enableAllEdits()">Editar Contato</button>
@@ -132,7 +121,6 @@
         </div>
       </div>
 
-      <!-- Caso nenhum contato tenha sido selecionado -->
       <div *ngIf="!selectedContato" class="text-center mt-5">
         <p class="cute-label">Nenhum contato selecionado!</p>
         <button class="btn cute-btn" [routerLink]="['/home']">Voltar</button>

@@ -1,17 +1,14 @@
 <div class="home-bg min-vh-100 d-flex justify-content-center align-items-start py-5">
   <div class="container" style="max-width: 1100px;">
 
-    <!-- Card principal -->
     <div class="cute-card shadow-lg w-100">
 
       <app-header></app-header>
 
-      <!-- Topo: Busca + Ações -->
       <div class="p-4 border-bottom cute-section">
 
         <h2 class="text-center mb-4">Lista de Contatos</h2>
 
-        <!-- Barra de busca -->
         <div class="input-group cute-search mb-3">
           <span class="input-group-text cute-search-icon">🔍</span>
 
@@ -25,18 +22,14 @@
 
           <button class="btn cute-btn px-4" (click)="buscar()">Buscar</button>
         </div>
-
-        <!-- Ações principais -->
         <div class="d-flex justify-content-between flex-wrap">
+          
+            <button
+              class="btn cute-btn mb-2"
+              [routerLink]="['/novocontato']">
+              ➕ Novo Contato
+            </button>
 
-          <!-- Botão novo contato -->
-          <button
-            class="btn cute-btn mb-2"
-            [routerLink]="['/novocontato']">
-            ➕ Novo Contato
-          </button>
-
-          <!-- Botões de ordenação -->
           <div class="btn-group mb-2">
             <button class="btn cute-btn" (click)="ordenarPor('fullname')">A-Z</button>
             <button class="btn cute-btn" (click)="ordenarPor('email')">Email</button>
@@ -46,10 +39,8 @@
         </div>
       </div>
 
-      <!-- Área de filtros lateral + lista -->
       <div class="row m-0">
 
-        <!-- Filtros -->
         <div class="col-12 col-md-3 p-4 cute-filter border-end">
           <h5 class="mb-3">Filtros</h5>
 
@@ -81,10 +72,8 @@
           </div>
         </div>
 
-        <!-- Lista de cartões -->
         <div class="col-12 col-md-9 p-4">
 
-          <!-- Lista em cards -->
           <div class="row g-3">
 
             <div
@@ -122,7 +111,6 @@
 
           </div>
 
-          <!-- Paginação -->
           <nav class="mt-4" *ngIf="contatosFiltrados.length > 0">
             <ul class="pagination justify-content-center">
               <li class="page-item" [class.disabled]="paginaAtual === 1">
@@ -139,7 +127,6 @@
             </ul>
           </nav>
 
-          <!-- Mensagem caso vazio -->
           <div class="text-center mt-3" *ngIf="contatosFiltrados.length === 0">
             <p class="text-muted">Nenhum contato encontrado 💭</p>
           </div>

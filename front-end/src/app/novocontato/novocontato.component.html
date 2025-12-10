@@ -5,12 +5,10 @@
 
       <div class="p-4">
 
-        <!-- Título -->
         <h1 class="text-center cute-title mb-4">Novo Contato</h1>
 
         <form [formGroup]="formGroupContato">
           
-          <!-- Seção: Informações Básicas -->
           <div class="cute-section mb-4">
             <h4 class="cute-section-title">❀ Informações Básicas</h4>
 
@@ -33,7 +31,6 @@
             </div>
           </div>
 
-          <!-- Seção: Identificação -->
           <div class="cute-section mb-4">
             <h4 class="cute-section-title">❀ Identificação</h4>
 
@@ -50,7 +47,6 @@
             </div>
           </div>
 
-          <!-- Seção: Informações Pessoais -->
           <div class="cute-section mb-4">
             <h4 class="cute-section-title">❀ Informações Pessoais</h4>
 
@@ -79,12 +75,10 @@
             </div>
           </div>
 
-          <!-- Seção: Categoria e Favorito -->
           <div class="cute-section mb-4">
             <h4 class="cute-section-title">❀ Categoria</h4>
 
             <div class="row mt-2">
-              <!-- Tipo -->
               <div class="col-md-4 mb-3">
                 <label class="form-label cute-label">Tipo de Contato</label>
                 <select 
@@ -99,7 +93,6 @@
                 </select>
               </div>
 
-              <!-- Favorito -->
               <div class="col-md-4 mb-3 d-flex flex-column">
                 <label class="form-label cute-label">Favorito</label>
 
@@ -119,7 +112,6 @@
             </div>
           </div>
 
-          <!-- Botões -->
           <div class="d-flex justify-content-between mt-4">
             <button type="button" class="btn cute-btn" (click)="save()" [disabled]="formGroupContato.invalid">
               Salvar
