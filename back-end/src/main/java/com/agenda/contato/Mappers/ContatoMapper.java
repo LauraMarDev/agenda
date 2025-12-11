@@ -14,7 +14,6 @@ public class ContatoMapper {
         c.setAddress(request.address());
         c.setEmail(request.email());
         c.setNumber(request.number());
-        c.setType(request.type());
         c.setFavorite(request.favorite());
 
         return c;
@@ -30,7 +29,6 @@ public class ContatoMapper {
             Contato.getAddress(),
             Contato.getEmail(),
             Contato.getNumber(),
-            Contato.getType(),
             Contato.getFavorite()
         );
     }

@@ -21,8 +21,6 @@ import com.agenda.contato.dtos.ContatoResponse;
 
 import jakarta.validation.Valid;
 
-import com.agenda.contato.Entities.contato;
-
 import java.net.URI;
 import java.util.List;
 
@@ -35,7 +33,7 @@ public class ContatoController {
     private ContatoService service;
     
     @GetMapping
-    public ResponseEntity<List<contato>> getAll(){
+    public ResponseEntity<List<ContatoResponse>> getAll(){
         return ResponseEntity.ok(service.getAll());
     }
 
@@ -77,7 +75,7 @@ public class ContatoController {
             .path("/{id}")
             .buildAndExpand(response.id())
             .toUri();
-        return ResponseEntity.created(null).body(response);
+        return ResponseEntity.created(location).body(response);
     }
 
     @DeleteMapping("{id}")

@@ -23,9 +23,11 @@ public class ContatoService {
     @Autowired
     private ContatoRepository repository;
 
-    public List<contato> getAll(){
-        return repository.findAll();
-        
+    public List<ContatoResponse> getAll(){
+        return repository.findAll()
+        .stream()
+        .map(ContatoMapper::toDTO)
+        .toList();
     }
 
     /* Ordenação pelo nome */
@@ -84,7 +86,6 @@ public class ContatoService {
         aux.setAddress(request.address());
         aux.setEmail(request.email());
         aux.setNumber(request.number());
-        aux.setType(request.type());
         aux.setFavorite(request.favorite());
         repository.save(aux);
     }

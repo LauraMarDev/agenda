@@ -23,12 +23,40 @@
           <button class="btn cute-btn px-4" (click)="buscar()">Buscar</button>
         </div>
         <div class="d-flex justify-content-between flex-wrap">
-          
+          <div class="btn-group mb-2">
             <button
               class="btn cute-btn mb-2"
               [routerLink]="['/novocontato']">
               ➕ Novo Contato
             </button>
+            <button
+              class="btn cute-btn mb-2"
+              data-bs-toggle="modal"
+              data-bs-target="#formTipoModal">
+              ➕ Novo Tipo
+            </button>
+              <div class="modal fade" id="#formTipoModal" tabindex="-1" aria-labelledby="tipoModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered modal-lg">
+                    <div class="modal-content">
+
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="tipoModalLabel">Modal title</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+
+                    <div class="modal-body">
+                        <p>yess!</p>
+                    </div>
+                    
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                      <button type="button" class="btn btn-primary">Save changes</button>
+                    </div>
+                    </div>
+                </div>
+              </div>
+          </div>
+          
 
           <div class="btn-group mb-2">
             <button class="btn cute-btn" (click)="ordenarPor('fullname')">A-Z</button>
@@ -48,7 +76,7 @@
 
           <select #tipo class="form-select cute-input" (change)="filtrarPorTipo(tipo.value)">
             <option value="">Todos</option>
-            <option value="Familia">Família</option>
+            <option value="Familia">Família <i class="fa-solid fa-pen-to-square"></i></option>
             <option value="Trabalho">Trabalho</option>
             <option value="Faculdade">Faculdade</option>
             <option value="Amigos">Amigos</option>

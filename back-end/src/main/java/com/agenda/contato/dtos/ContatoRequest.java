@@ -18,8 +18,6 @@ public record ContatoRequest(
     String email,
     @NotBlank (message = "Número é requerido!")
     String number,
-    @NotBlank (message = "Tipo é requerido!")
-    String type,
     Boolean favorite
 ) {
 }

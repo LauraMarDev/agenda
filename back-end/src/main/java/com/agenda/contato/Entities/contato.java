@@ -12,15 +12,8 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
-/*
-@ManyToOne
-    @JoinColumn(name = "type_id")
-    private tipo type;
-
-*/
-
 @Entity
-@Table(name = "TBL_Contato")
+@Table(name = "TBL_CONTATO")
 public class contato implements Serializable{
 
     @Id
@@ -34,18 +27,17 @@ public class contato implements Serializable{
     private String email;
     @Column(unique = true)
     private String number;
-    private String type;
     private Boolean favorite;
 
     @ManyToOne
-    @JoinColumn(name = "type_id")
-    private tipo tipo;
+    @JoinColumn(name = "type_id", nullable = true)
+    private tipo type;
     
     public contato() {
 
     }
 
-    public contato(long id, String nickname, String fullname, String occupation, Date birthday, String address, String email, String number, String type, Boolean favorite) {
+    public contato(long id, String nickname, String fullname, String occupation, Date birthday, String address, String email, String number, Boolean favorite) {
         this.id = id;
         this.nickname = nickname;
         this.fullname = fullname;
@@ -54,7 +46,6 @@ public class contato implements Serializable{
         this.address = address;
         this.email = email;
         this.number = number;
-        this.type = type;
         this.favorite = favorite;
     }
 
@@ -95,10 +86,10 @@ public class contato implements Serializable{
     public void setNumber(String number) {
         this.number = number;
     }
-    public String getType() {
+    public tipo getType() {
         return type;
     }
-    public void setType(String type) {
+    public void setType(tipo type) {
         this.type = type;
     }
     public Boolean getFavorite() {
@@ -107,7 +98,6 @@ public class contato implements Serializable{
     public void setFavorite(Boolean favorite) {
         this.favorite = favorite;
     }
-
     public String getOccupation() {
         return occupation;
     }

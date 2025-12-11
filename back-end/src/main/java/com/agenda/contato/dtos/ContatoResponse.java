@@ -11,7 +11,6 @@ public record ContatoResponse(
     String address,
     String email,
     String number,
-    String type,
     Boolean favorite
 ) {
 

@@ -12,7 +12,7 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "TBL_Tipo")
+@Table(name = "TBL_TIPO")
 public class tipo implements Serializable {
     private static final long serialVersionUID = 1L;
     
@@ -21,8 +21,23 @@ public class tipo implements Serializable {
     private Long id;
     private String name;
 
-    @OneToMany(mappedBy = "type")
+    @OneToMany(mappedBy = "type_id")
     private List<contato> contato = new ArrayList<>();
+
+    public tipo() {}
+
+    public tipo(Long id, String name) {
+        this.id = id;
+        this.name = name;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public String getName() {
         return name;
