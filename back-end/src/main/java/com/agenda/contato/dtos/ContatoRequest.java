@@ -17,6 +17,7 @@ public record ContatoRequest(
     @Email (message = "E-mail inválido!")
     String email,
     @NotBlank (message = "Número é requerido!")
+    Long tipoId,
     String number,
     Boolean favorite
 ) {

@@ -24,9 +24,9 @@ import jakarta.validation.Valid;
 import java.net.URI;
 import java.util.List;
 
-@CrossOrigin
 @RestController
-@RequestMapping("contato")
+@RequestMapping("/contato")
+@CrossOrigin
 public class ContatoController {
     
     @Autowired
@@ -78,13 +78,13 @@ public class ContatoController {
         return ResponseEntity.created(location).body(response);
     }
 
-    @DeleteMapping("{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<Void>delete(@PathVariable long id){
         service.delete(id);
         return ResponseEntity.noContent().build();
     }
 
-    @PutMapping("{id}")
+    @PutMapping("/{id}")
     public ResponseEntity<Void>update(@PathVariable long id, @Valid @RequestBody ContatoRequest request){
         service.update(request, id);
         return ResponseEntity.noContent().build();

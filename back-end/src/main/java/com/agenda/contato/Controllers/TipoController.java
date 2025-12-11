@@ -23,7 +23,7 @@ import com.agenda.contato.dtos.TipoResponse;
 import jakarta.validation.Valid;
 
 @RestController
-@RequestMapping("tipo")
+@RequestMapping("/tipo")
 @CrossOrigin
 public class TipoController {
 

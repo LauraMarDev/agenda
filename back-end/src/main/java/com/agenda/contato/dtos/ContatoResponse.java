@@ -11,7 +11,6 @@ public record ContatoResponse(
     String address,
     String email,
     String number,
+    TipoResponse type,
     Boolean favorite
-) {
-
-}
+) {}

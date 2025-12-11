@@ -21,7 +21,7 @@ public class tipo implements Serializable {
     private Long id;
     private String name;
 
-    @OneToMany(mappedBy = "type_id")
+    @OneToMany(mappedBy = "TYPE_ID")
     private List<contato> contato = new ArrayList<>();
 
     public tipo() {}

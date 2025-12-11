@@ -19,5 +19,5 @@ public interface ContatoRepository extends JpaRepository <contato, Long> {
 
     List<contato> findByNicknameContainingIgnoreCase(String nickname);
     
-    List<contato> getContatoById(long id);
+    List<contato> getContatoById(Long id);
 } 

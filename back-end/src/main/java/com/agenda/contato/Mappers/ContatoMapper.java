@@ -5,6 +5,7 @@ import com.agenda.contato.dtos.ContatoRequest;
 import com.agenda.contato.dtos.ContatoResponse;
 
 public class ContatoMapper {
+
     public static contato toEntity(ContatoRequest request) {
         contato c = new contato();
         c.setNickname(request.nickname());
@@ -29,6 +30,7 @@ public class ContatoMapper {
             Contato.getAddress(),
             Contato.getEmail(),
             Contato.getNumber(),
+            Contato.getType() != null ? TipoMapper.toResponse(contato.getType()) : null,
             Contato.getFavorite()
         );
     }
