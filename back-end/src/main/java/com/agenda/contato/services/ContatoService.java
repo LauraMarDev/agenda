@@ -1,14 +1,14 @@
-package com.agenda.contato.Service;
+package com.agenda.contato.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.data.domain.Sort;
 
-import com.agenda.contato.Entities.contato;
-import com.agenda.contato.Mappers.ContatoMapper;
-import com.agenda.contato.Repositories.ContatoRepository;
 import com.agenda.contato.dtos.ContatoRequest;
 import com.agenda.contato.dtos.ContatoResponse;
+import com.agenda.contato.entities.Contato;
+import com.agenda.contato.mappers.ContatoMapper;
+import com.agenda.contato.repositories.ContatoRepository;
 
 import jakarta.persistence.EntityNotFoundException;
 
@@ -48,7 +48,7 @@ public class ContatoService {
 
     /* barrinha de busca para nome, apelido, ... */
     public List<ContatoResponse> findByAnything(String termo) {
-    return Stream.<Function<String, List<contato>>>of(
+    return Stream.<Function<String, List<Contato>>>of(
         repository::findByNumber,
         repository::findByAddressIgnoreCase,
         repository::findByFullnameContainingIgnoreCase,
@@ -71,14 +71,14 @@ public class ContatoService {
             throw new IllegalArgumentException("Já existe um contato com este número.");
         }
 
-        contato Contato = ContatoMapper.toEntity(request);
-        contato savedContato = repository.save(Contato);
+        Contato contato = ContatoMapper.toEntity(request);
+        Contato savedContato = repository.save(contato);
 
         return ContatoMapper.toDTO(savedContato);
     }
 
     public void update (ContatoRequest request, Long id){
-        contato aux = repository.getReferenceById(id);
+        Contato aux = repository.getReferenceById(id);
         aux.setNickname(request.nickname());
         aux.setFullname(request.fullname());
         aux.setOccupation(request.occupation());

@@ -1,4 +1,4 @@
-package com.agenda.contato.Entities;
+package com.agenda.contato.entities;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -13,20 +13,19 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "TBL_TIPO")
-public class tipo implements Serializable {
-    private static final long serialVersionUID = 1L;
+public class Tipo implements Serializable {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
 
-    @OneToMany(mappedBy = "TYPE_ID")
-    private List<contato> contato = new ArrayList<>();
+    @OneToMany(mappedBy = "type")
+    private List<Contato> contatos = new ArrayList<>();
 
-    public tipo() {}
+    public Tipo() {}
 
-    public tipo(Long id, String name) {
+    public Tipo(Long id, String name) {
         this.id = id;
         this.name = name;
     }
@@ -47,12 +46,12 @@ public class tipo implements Serializable {
         this.name = name;
     }
 
-    public List<contato> getContato() {
-        return contato;
+    public List<Contato> getContato() {
+        return contatos;
     }
 
-    public void setContato(List<contato> contato) {
-        this.contato = contato;
+    public void setContato(List<Contato> contatos) {
+        this.contatos = contatos;
     }
 
     @Override
@@ -71,7 +70,7 @@ public class tipo implements Serializable {
             return false;
         if (getClass() != obj.getClass())
             return false;
-        tipo other = (tipo) obj;
+        Tipo other = (Tipo) obj;
         if (id == null) {
             if (other.id != null)
                 return false;

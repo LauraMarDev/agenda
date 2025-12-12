@@ -1,4 +1,4 @@
-package com.agenda.contato.Controllers;
+package com.agenda.contato.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
@@ -15,9 +15,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import com.agenda.contato.Service.*;
 import com.agenda.contato.dtos.ContatoRequest;
 import com.agenda.contato.dtos.ContatoResponse;
+import com.agenda.contato.services.ContatoService;
 
 import jakarta.validation.Valid;
 
@@ -25,7 +25,7 @@ import java.net.URI;
 import java.util.List;
 
 @RestController
-@RequestMapping("/contato")
+@RequestMapping("contatos")
 @CrossOrigin
 public class ContatoController {
     
@@ -61,7 +61,7 @@ public class ContatoController {
     return ResponseEntity.ok(service.findByAnything(termo));
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("{id}")
     public ResponseEntity<ContatoResponse> getContatoById(@PathVariable Long id) {
             return ResponseEntity.ok(service.getContatoById(id));         
     }
@@ -78,13 +78,13 @@ public class ContatoController {
         return ResponseEntity.created(location).body(response);
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("{id}")
     public ResponseEntity<Void>delete(@PathVariable long id){
         service.delete(id);
         return ResponseEntity.noContent().build();
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("{id}")
     public ResponseEntity<Void>update(@PathVariable long id, @Valid @RequestBody ContatoRequest request){
         service.update(request, id);
         return ResponseEntity.noContent().build();

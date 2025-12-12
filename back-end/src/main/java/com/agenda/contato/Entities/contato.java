@@ -1,4 +1,4 @@
-package com.agenda.contato.Entities;
+package com.agenda.contato.entities;
 
 import java.io.Serializable;
 import java.sql.Date;
@@ -14,7 +14,7 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "TBL_CONTATO")
-public class contato implements Serializable{
+public class Contato implements Serializable{
 
     private static final long serialVersionUID = 1L;
 
@@ -27,31 +27,21 @@ public class contato implements Serializable{
     private Date birthday;
     private String address;
     private String email;
+
     @Column(unique = true)
     private String number;
+    
     private Boolean favorite;
 
     @ManyToOne
     @JoinColumn(name = "TYPE_ID")
-    private tipo type;
+    private Tipo type;
     
-    public contato() {
+    public Contato() {
 
     }
 
-    public contato(Long id, String nickname, String fullname, String occupation, Date birthday, String address, String email, String number, Boolean favorite) {
-        this.id = id;
-        this.nickname = nickname;
-        this.fullname = fullname;
-        this.occupation = occupation;
-        this.birthday = birthday;
-        this.address = address;
-        this.email = email;
-        this.number = number;
-        this.favorite = favorite;
-    }
-
-    public contato(Long id, String nickname, String fullname, String occupation, Date birthday, String address, String email, String number, tipo type, Boolean favorite) {
+    public Contato(Long id, String nickname, String fullname, String occupation, Date birthday, String address, String email, String number, Tipo type, Boolean favorite) {
         this.id = id;
         this.nickname = nickname;
         this.fullname = fullname;
@@ -136,11 +126,11 @@ public class contato implements Serializable{
         this.favorite = favorite;
     }
 
-    public tipo getType() {
+    public Tipo getType() {
         return type;
     }
 
-    public void setType(tipo type) {
+    public void setType(Tipo type) {
         this.type = type;
     }
 
@@ -160,7 +150,7 @@ public class contato implements Serializable{
             return false;
         if (getClass() != obj.getClass())
             return false;
-        contato other = (contato) obj;
+        Contato other = (Contato) obj;
         if (id == null) {
             if (other.id != null)
                 return false;

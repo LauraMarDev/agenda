@@ -1,23 +1,23 @@
-package com.agenda.contato.Repositories;
+package com.agenda.contato.repositories;
 
 import java.util.List;
 
 import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.agenda.contato.Entities.contato;
+import com.agenda.contato.entities.Contato;
 
-public interface ContatoRepository extends JpaRepository <contato, Long> {
+public interface ContatoRepository extends JpaRepository <Contato, Long> {
 
-    List<contato> findByFavoriteTrue(Sort sort);
+    List<Contato> findByFavoriteTrue(Sort sort);
 
-    List<contato> findByNumber(String number);
+    List<Contato> findByNumber(String number);
 
-    List<contato> findByFullnameContainingIgnoreCase(String fullname);
+    List<Contato> findByFullnameContainingIgnoreCase(String fullname);
 
-    List<contato> findByAddressIgnoreCase(String address);
+    List<Contato> findByAddressIgnoreCase(String address);
 
-    List<contato> findByNicknameContainingIgnoreCase(String nickname);
+    List<Contato> findByNicknameContainingIgnoreCase(String nickname);
     
-    List<contato> getContatoById(Long id);
+    List<Contato> getContatoById(Long id);
 } 

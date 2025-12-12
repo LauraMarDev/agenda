@@ -1,4 +1,4 @@
-package com.agenda.contato.Controllers.Exceptions;
+package com.agenda.contato.controllers.Exceptions;
 
 import java.time.Instant;
 

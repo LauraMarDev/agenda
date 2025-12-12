@@ -1,15 +1,15 @@
-package com.agenda.contato.Service;
+package com.agenda.contato.services;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.agenda.contato.Mappers.TipoMapper;
-import com.agenda.contato.Repositories.TipoRepository;
-import com.agenda.contato.Entities.tipo;
 import com.agenda.contato.dtos.TipoRequest;
 import com.agenda.contato.dtos.TipoResponse;
+import com.agenda.contato.entities.Tipo;
+import com.agenda.contato.mappers.TipoMapper;
+import com.agenda.contato.repositories.TipoRepository;
 
 import jakarta.persistence.EntityNotFoundException;
 
@@ -26,19 +26,19 @@ public class TipoService {
     }
 
     public TipoResponse getTipoById(Long id) {
-        tipo type = repository.findById(id)
+        Tipo type = repository.findById(id)
         .orElseThrow(() -> new EntityNotFoundException("Tipo não encontrado"));
         return TipoMapper.toResponse(type);
     }
 
     public TipoResponse createTipo(TipoRequest request) {
-        tipo type = TipoMapper.toEntity(request);
+        Tipo type = TipoMapper.toEntity(request);
         type = repository.save(type);
         return TipoMapper.toResponse(type);
     }
 
     public TipoResponse updateTipo(Long id, TipoRequest request) {
-        tipo type = repository.findById(id)
+        Tipo type = repository.findById(id)
         .orElseThrow(() -> new EntityNotFoundException("Tipo não encontrado"));
         type.setName(request.name());
         type = repository.save(type);

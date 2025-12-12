@@ -1,4 +1,4 @@
-package com.agenda.contato.Controllers;
+package com.agenda.contato.controllers;
 
 import java.net.URI;
 import java.util.List;
@@ -16,14 +16,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import com.agenda.contato.Service.TipoService;
 import com.agenda.contato.dtos.TipoRequest;
 import com.agenda.contato.dtos.TipoResponse;
+import com.agenda.contato.services.TipoService;
 
 import jakarta.validation.Valid;
 
 @RestController
-@RequestMapping("/tipo")
+@RequestMapping("/tipos")
 @CrossOrigin
 public class TipoController {
 
@@ -32,8 +32,8 @@ public class TipoController {
 
     @GetMapping
     public ResponseEntity<List<TipoResponse>> getAllTipo(){
-        List<TipoResponse> tipo = service.getAllTipo();
-        return ResponseEntity.ok(tipo);
+        List<TipoResponse> tipos = service.getAllTipo();
+        return ResponseEntity.ok(tipos);
     }
     
     @GetMapping("/{id}")
